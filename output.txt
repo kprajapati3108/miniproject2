@@ -1,0 +1,63 @@
+======================================================================
+Test: Check that there is 1 AMI tagged module-11-template
+Required: 1
+Actual: 1
+Result: PASS
+
+======================================================================
+Test: Check that there is 1 RDS Snapshot tagged module-11-template
+Required: 1
+Actual: 1
+Result: PASS
+
+======================================================================
+Test: Check that there is 1 RDS Instance tagged module-11
+Required: 1
+Actual: 1
+Result: PASS
+
+======================================================================
+Test: Check that there is 1 Database subnet group tagged module-11
+Required: 1
+Actual: 1
+Result: PASS
+
+======================================================================
+Test: Check that there are 2 Security Groups tagged module-11
+Required: 2
+Actual: 2
+Result: PASS
+
+======================================================================
+Test: Check that the HTTP check returns HTTP 200
+Required: HTTP 200 from at least one EC2 public IP
+Actual: http://18.116.162.65
+Result: PASS
+
+======================================================================
+Test: Check that there are 3 EC2 instances tagged module-11
+Required: 3
+Actual: 3
+Result: PASS
+
+======================================================================
+Test: Check that there are 2 secrets in Secrets Manager tagged module-11
+Required: 2
+Actual: 2
+Result: PASS
+
+======================================================================
+Test: Check that there are 3 subnets tagged module-11
+Required: 3
+Actual: 3
+Result: PASS
+
+======================================================================
+Test: Check that there is one Auto Scaling Group tagged module-11
+Required: 1
+Actual: 1
+Result: PASS
+
+======================================================================
+grandTotal score: 10/10
+======================================================================
