@@ -1,35 +1,35 @@
 # Mini Project 2
 # Khushi Prajapati
 
-Error: Terraform Provider Plugin Fails to Start
-[Error Message]
-[Error: Failed to load plugin schemas]
-[timeout while waiting for plugin to start]
+## ⚠️ Fix for Terraform Plugin Error (Vagrant Users)
 
-Cause
-This error usually happens in environments like Vagrant or restricted Linux VMs where:
+If you encounter the following error while running Terraform:
 
-Terraform cannot write to default system temp directories
-Plugin cache directory is missing or not writable
-AWS provider fails to initialize due to environment restrictions
+```
+Error: Failed to load plugin schemas
+timeout while waiting for plugin to start
+```
 
-Fix
-Create custom temporary and plugin cache directories, and set environment variables before running Terraform:
+This usually happens in Vagrant or restricted Linux environments where Terraform cannot properly use system temporary directories or plugin cache.
 
+### ✅ Solution
+
+Run the following commands before `terraform init`:
+
+```
 mkdir -p ~/tmp ~/terraform-plugin-cache
-
 export TMPDIR=~/tmp
 export TF_PLUGIN_CACHE_DIR=~/terraform-plugin-cache
+```
 
-Then run:
+Then re-run:
+
+```
 terraform init -upgrade
-terraform validate
+```
 
-Why this works
-TMPDIR → tells Terraform where to store temporary files (fixes permission issues)
-TF_PLUGIN_CACHE_DIR → stores provider plugins locally and avoids repeated downloads
-Prevents plugin startup failures caused by system restrictions
+### 📝 Notes
 
-Important Notes
-These export commands are temporary (they reset after terminal closes)
-If the issue happens again, re-run the export commands
+* These environment variables are temporary and reset after restarting the VM
+* If the issue occurs again, just run the same commands again
+* This fix is commonly required when using Terraform inside Vagrant
